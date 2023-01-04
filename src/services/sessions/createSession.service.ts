@@ -20,7 +20,7 @@ const createSessionService = async ( { email, password }: IUserLogin ): Promise<
     };
 
     if ( !user.isActive ) {
-        throw new AppError( 'Inactive user!', 403 );        
+        throw new AppError( 'Inactive user!', 400 )
     }
     
     const token = jwt.sign( {}, String( process.env.SECRET_KEY ), {
