@@ -9,13 +9,13 @@ const createUserService = async (userData: IUserRequest): Promise<IUser> => {
 
     const findUser = await userRepository.findOneBy({ email: userData.email })
     if (findUser) {
-        throw new AppError('User already exists!', 400);
+        throw new AppError( 'User already exists!', 400 );
     };
 
     const createdUser = userRepository.create(userData);
     await userRepository.save(createdUser);
 
-    const userResponse = await userResponseSerializer.validate(createdUser, { stripUnknown: true });
+    const userResponse = await userResponseSerializer.validate( createdUser, { stripUnknown: true } );
 
     return userResponse;
 };
