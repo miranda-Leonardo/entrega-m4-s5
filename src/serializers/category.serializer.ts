@@ -11,4 +11,6 @@ const responseCategorySerializer: SchemaOf<ICategoryResponse> = yup.object().sha
     name: yup.string().required()
 });
 
-export { createCategorySerializer, responseCategorySerializer };
+const listCategoriesSerializer: SchemaOf<ICategoryResponse[]> = yup.array(responseCategorySerializer);
+
+export { createCategorySerializer, responseCategorySerializer, listCategoriesSerializer };
