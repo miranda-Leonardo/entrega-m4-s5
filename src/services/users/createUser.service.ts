@@ -1,10 +1,10 @@
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/users.entity";
 import { AppError } from "../../errors/app.error";
-import { IUser, IUserRequest } from "../../interfaces/users";
+import { IUserRequest, IUserResponse } from "../../interfaces/users";
 import { userResponseSerializer } from "../../serializers/user.serializer";
 
-const createUserService = async (userData: IUserRequest): Promise<IUser> => {
+const createUserService = async (userData: IUserRequest): Promise<IUserResponse> => {
     const userRepository = AppDataSource.getRepository(User);
 
     const findUser = await userRepository.findOneBy({ email: userData.email })
