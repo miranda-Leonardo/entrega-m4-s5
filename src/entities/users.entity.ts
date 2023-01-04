@@ -33,7 +33,7 @@ class User {
     createdAt: Date;
 
     @UpdateDateColumn()
-    updateAt: Date;
+    updatedAt: Date;
 
     @BeforeUpdate()
     @BeforeInsert()

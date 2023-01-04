@@ -1,15 +1,15 @@
 import * as yup from 'yup';
 import { SchemaOf } from 'yup';
-import { IUserRequest, IUserResponse } from '../interfaces/users';
+import { IUserRequest, IUserResponse, IUserUpdate } from '../interfaces/users';
 
-const userCreateSerializer: SchemaOf<IUserRequest> = yup.object().shape({
+const createUserSerializer: SchemaOf<IUserRequest> = yup.object().shape({
     name: yup.string().required(),
     email: yup.string().email().required(),
     password: yup.string().required(),
     isAdm: yup.boolean().required()
 });
 
-const userResponseSerializer: SchemaOf<IUserResponse> = yup.object().shape({
+const responseUserSerializer: SchemaOf<IUserResponse> = yup.object().shape({
     id: yup.string().required(),
     name: yup.string().required(),
     email: yup.string().email().required(),
@@ -19,6 +19,12 @@ const userResponseSerializer: SchemaOf<IUserResponse> = yup.object().shape({
     updatedAt: yup.date().required()
 });
 
-const listUsersSerializer: SchemaOf<IUserResponse[]> = yup.array(userResponseSerializer);
+const listUsersSerializer: SchemaOf<IUserResponse[]> = yup.array(responseUserSerializer);
 
-export { userCreateSerializer, userResponseSerializer, listUsersSerializer };
+const updateUserSerializer: SchemaOf<IUserUpdate> = yup.object().shape({
+    name: yup.string().required(),
+    email: yup.string().required(),
+    password: yup.string().required()
+});
+
+export { createUserSerializer, responseUserSerializer, listUsersSerializer, updateUserSerializer };
