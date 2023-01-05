@@ -5,9 +5,11 @@ import {
     Column, 
     CreateDateColumn, 
     Entity, 
+    OneToMany, 
     PrimaryGeneratedColumn, 
     UpdateDateColumn 
 } from 'typeorm';
+import { Schudele } from './schudeles.entity';
 
 @Entity('users') 
 class User {
@@ -34,6 +36,9 @@ class User {
 
     @UpdateDateColumn()
     updatedAt: Date;
+
+    @OneToMany( () => Schudele, schudele => schudele.id )
+    schudeles: Schudele[];
 
     @BeforeUpdate()
     @BeforeInsert()

@@ -4,12 +4,14 @@ import {
     Entity,
     JoinColumn,
     ManyToOne,
+    OneToMany,
     OneToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn
 } from 'typeorm';
 import { Address } from './addresses.entity';
 import { Category } from './categories.entity';
+import { Schudele } from './schudeles.entity';
 
 @Entity('properties')
 class Property {
@@ -37,6 +39,9 @@ class Property {
 
     @ManyToOne(() => Category, category => category.id)
     category: Category;
+
+    @OneToMany( () => Schudele, schudele => schudele.id )
+    schudeles: Schudele[];
 };
 
 export { Property };
