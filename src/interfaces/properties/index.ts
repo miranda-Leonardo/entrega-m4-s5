@@ -12,3 +12,12 @@ export interface IPropertyRequest {
     address: IAddressRequest
     categoryId: string
 }
+
+export interface IPropertyResponse {
+    id: string,
+    sold: boolean,
+    value: number,
+    size: number,
+    createdAt: Date,
+    updatedAt: Date
+};

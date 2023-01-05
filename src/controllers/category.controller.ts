@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { ICategoryRequest } from '../interfaces/categories';
 import { createCategoryService } from '../services/categories/createCategory.service';
 import { listCategoriesService } from '../services/categories/listCategories.service';
+import { listAllPropertiesCategoryService } from '../services/categories/listPropertiesOfCategory.service';
 
 const createCategoryController = async ( req: Request, res: Response ) => {
     const categoryData: ICategoryRequest = req.body;
@@ -14,4 +15,10 @@ const listCategoriesController = async ( req: Request, res: Response ) => {
     return res.json(categories);
 };
 
-export { createCategoryController, listCategoriesController };
+const listAllPropertiesCategoryController = async ( req: Request, res: Response ) => {
+    const categoryId: string = req.params.id;
+    const allPropertiesCategory = await listAllPropertiesCategoryService( categoryId );
+    return res.json(allPropertiesCategory);
+};
+
+export { createCategoryController, listCategoriesController, listAllPropertiesCategoryController };

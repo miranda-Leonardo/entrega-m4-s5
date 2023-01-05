@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createCategoryController, listCategoriesController } from '../controllers/category.controller';
+import { createCategoryController, listCategoriesController, listAllPropertiesCategoryController } from '../controllers/category.controller';
 import { ensureAuthMiddleware } from '../middlewares/ensureAuth.middleware';
 import { ensureDataIsValidMiddleware } from '../middlewares/ensureDataIsValid.middleware';
 import { ensureIsAdmMiddleware } from '../middlewares/ensureIsAdm.middleware';
@@ -9,5 +9,6 @@ const categoryRoutes = Router();
 
 categoryRoutes.post('', ensureAuthMiddleware, ensureIsAdmMiddleware, ensureDataIsValidMiddleware(createCategorySerializer), createCategoryController);
 categoryRoutes.get('', ensureAuthMiddleware, listCategoriesController);
+categoryRoutes.get('/:id/properties', ensureAuthMiddleware, listAllPropertiesCategoryController);
 
 export { categoryRoutes };
