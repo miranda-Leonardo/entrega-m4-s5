@@ -2,10 +2,10 @@ import AppDataSource from '../../data-source';
 import { Address } from '../../entities/addresses.entity';
 import { Property } from '../../entities/properties.entity';
 import { AppError } from '../../errors/app.error';
-import { IPropertyRequest, IPropertyResponse } from '../../interfaces/properties';
-import { responsePropertySerializer } from '../../serializers/property.serializer';
+import { IPropertyRequest, IPropertyWithAddressResponse } from '../../interfaces/properties';
+import { responsePropertyWithAddressSerializer } from '../../serializers/property.serializer';
 
-const createPropertyService = async ( { value, size, categoryId, address: addressData }: IPropertyRequest ): Promise<IPropertyResponse> => {
+const createPropertyService = async ( { value, size, categoryId, address: addressData }: IPropertyRequest ): Promise<IPropertyWithAddressResponse> => {
     const addressRepository = AppDataSource.getRepository(Address);
 
     const findAddress = await addressRepository.findOneBy({ district: addressData.district });
@@ -22,7 +22,7 @@ const createPropertyService = async ( { value, size, categoryId, address: addres
     const createdProperty = propertyRepository.create(propertyData);
     await propertyRepository.save(createdProperty);
 
-    const propertyResponse = await responsePropertySerializer.validate({ ...createdProperty, adress: createdAddress }, {
+    const propertyResponse = await responsePropertyWithAddressSerializer.validate({ ...createdProperty, adress: createdAddress }, {
         stripUnknown: true
     });
 

@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import { SchemaOf } from 'yup';
-import { IPropertyRequest, IPropertyResponse } from '../interfaces/properties';
+import { IPropertyRequest, IPropertyResponse, IPropertyWithAddressResponse } from '../interfaces/properties';
 
 const createPropertySerializer: SchemaOf<IPropertyRequest> = yup.object().shape({
     value: yup.number().required(),
@@ -15,7 +15,7 @@ const createPropertySerializer: SchemaOf<IPropertyRequest> = yup.object().shape(
     categoryId: yup.string().required()
 });
 
-const responsePropertySerializer: SchemaOf<IPropertyResponse> = yup.object().shape({
+const responsePropertyWithAddressSerializer: SchemaOf<IPropertyWithAddressResponse> = yup.object().shape({
     id: yup.string().required(),
     sold: yup.boolean().required(),
     value: yup.number().required(),
@@ -32,4 +32,15 @@ const responsePropertySerializer: SchemaOf<IPropertyResponse> = yup.object().sha
     updatedAt: yup.date().required()
 });
 
-export { createPropertySerializer, responsePropertySerializer };
+const responsePropertySerializer: SchemaOf<IPropertyResponse> = yup.object().shape({
+    id: yup.string().required(),
+    sold: yup.boolean().required(),
+    value: yup.number().required(),
+    size: yup.number().required(),
+    createdAt: yup.date().required(),
+    updatedAt: yup.date().required()
+});
+
+const listPropertiesSerializer: SchemaOf<IPropertyResponse[]> = yup.array(responsePropertySerializer);
+
+export { createPropertySerializer, responsePropertyWithAddressSerializer, responsePropertySerializer, listPropertiesSerializer };

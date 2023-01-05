@@ -22,12 +22,21 @@ export interface IPropertyRequest {
     categoryId: string
 }
 
-export interface IPropertyResponse {
+export interface IPropertyWithAddressResponse {
     id: string
     sold: boolean
     value: number
     size: number
     address: IAddressResponse
+    createdAt: Date
+    updatedAt: Date
+};
+
+export interface IPropertyResponse {
+    id: string
+    sold: boolean
+    value: number
+    size: number
     createdAt: Date
     updatedAt: Date
 };
