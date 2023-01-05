@@ -11,16 +11,16 @@ class Address {
     @Column()
     district: string;
 
-    @Column()
+    @Column({ length: 8 })
     zipCode: string;
 
-    @Column()
-    number: string;
+    @Column({ nullable: true })
+    number?: string;
 
     @Column()
     city: string;
 
-    @Column()
+    @Column({ length: 2 })
     state: string;
 };
 

@@ -1,8 +1,8 @@
-import AppDataSource from "../../data-source";
-import { Category } from "../../entities/categories.entity";
-import { AppError } from "../../errors/app.error";
-import { ICategoryRequest, ICategoryResponse } from "../../interfaces/categories";
-import { responseCategorySerializer } from "../../serializers/category.serializer";
+import AppDataSource from '../../data-source';
+import { Category } from '../../entities/categories.entity';
+import { AppError } from '../../errors/app.error';
+import { ICategoryRequest, ICategoryResponse } from '../../interfaces/categories';
+import { responseCategorySerializer } from '../../serializers/category.serializer';
 
 const createCategoryService = async ( categoryData: ICategoryRequest ): Promise<ICategoryResponse> => {
     const categoryRepository = AppDataSource.getRepository(Category);

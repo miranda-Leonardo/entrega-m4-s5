@@ -6,6 +6,15 @@ export interface IAddressRequest {
     state: string
 }
 
+export interface IAddressResponse {
+    id: string
+    district: string
+    zipCode: string
+    number?: string
+    city: string
+    state: string
+};
+
 export interface IPropertyRequest {
     value: number
     size: number
@@ -14,10 +23,11 @@ export interface IPropertyRequest {
 }
 
 export interface IPropertyResponse {
-    id: string,
-    sold: boolean,
-    value: number,
-    size: number,
-    createdAt: Date,
+    id: string
+    sold: boolean
+    value: number
+    size: number
+    address: IAddressResponse
+    createdAt: Date
     updatedAt: Date
 };
