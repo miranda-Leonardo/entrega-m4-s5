@@ -14,7 +14,7 @@ class Category {
     @Column({ unique: true })
     name: string;
 
-    @OneToMany(() => Property, property => property.id)
+    @OneToMany(() => Property, property => property.category)
     properties: Property[];
 };
 

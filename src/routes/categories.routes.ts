@@ -8,7 +8,7 @@ import { createCategorySerializer } from '../serializers/category.serializer';
 const categoryRoutes = Router();
 
 categoryRoutes.post('', ensureAuthMiddleware, ensureIsAdmMiddleware, ensureDataIsValidMiddleware(createCategorySerializer), createCategoryController);
-categoryRoutes.get('', ensureAuthMiddleware, listCategoriesController);
-categoryRoutes.get('/:id/properties', ensureAuthMiddleware, listAllPropertiesCategoryController);
+categoryRoutes.get('', listCategoriesController);
+categoryRoutes.get('/:id/properties', listAllPropertiesCategoryController);
 
 export { categoryRoutes };

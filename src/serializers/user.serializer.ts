@@ -22,9 +22,9 @@ const responseUserSerializer: SchemaOf<IUserResponse> = yup.object().shape({
 const listUsersSerializer: SchemaOf<IUserResponse[]> = yup.array(responseUserSerializer);
 
 const updateUserSerializer: SchemaOf<IUserUpdate> = yup.object().shape({
-    name: yup.string().required(),
-    email: yup.string().required(),
-    password: yup.string().required()
+    name: yup.string().notRequired(),
+    email: yup.string().email().notRequired(),
+    password: yup.string().notRequired()
 });
 
 export { createUserSerializer, responseUserSerializer, listUsersSerializer, updateUserSerializer };

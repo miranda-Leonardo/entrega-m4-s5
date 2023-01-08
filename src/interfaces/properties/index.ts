@@ -1,3 +1,6 @@
+import { Address } from "../../entities/addresses.entity"
+import { Category } from "../../entities/categories.entity"
+
 export interface IAddressRequest {
     district: string
     zipCode: string
@@ -27,7 +30,8 @@ export interface IPropertyWithAddressResponse {
     sold: boolean
     value: number
     size: number
-    address: IAddressResponse
+    category: Category
+    address: Address
     createdAt: Date
     updatedAt: Date
 };

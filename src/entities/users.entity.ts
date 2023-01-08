@@ -37,7 +37,7 @@ class User {
     @UpdateDateColumn()
     updatedAt: Date;
 
-    @OneToMany( () => Schudele, schudele => schudele.id )
+    @OneToMany( () => Schudele, schudele => schudele.user )
     schudeles: Schudele[];
 
     @BeforeUpdate()

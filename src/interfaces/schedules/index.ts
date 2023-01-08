@@ -1,8 +1,8 @@
 export interface IScheduleRequest {
-    userId: string
     propertyId: string
     date: string
     hour: string
+    userId: string
 }
 
 export interface IScheduleResponse {

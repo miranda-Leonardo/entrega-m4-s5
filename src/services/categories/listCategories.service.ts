@@ -6,9 +6,9 @@ import { listCategoriesSerializer } from '../../serializers/category.serializer'
 const listCategoriesService = async (): Promise<ICategoryResponse[] | undefined> => {
     const categoryRepository = AppDataSource.getRepository(Category);
 
-    const categories = await categoryRepository.find();
+    const getAllCategories = await categoryRepository.find();
 
-    const listCategories = await listCategoriesSerializer.validate( categories, {
+    const listCategories = await listCategoriesSerializer.validate( getAllCategories, {
         stripUnknown: true
     });
 

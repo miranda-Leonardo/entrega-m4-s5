@@ -13,8 +13,8 @@ class Schudele {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @CreateDateColumn()
-    date: Date;
+    @Column({ type: 'date' })
+    date: string;
 
     @Column({ type: 'time' })
     hour: string

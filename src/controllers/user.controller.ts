@@ -24,10 +24,10 @@ const updateUserController = async ( req: Request, res: Response ) => {
     return res.json(updatedUser);
 };
 
-const deleteUserController =async ( req: Request, res: Response ) => {
+const deleteUserController = async ( req: Request, res: Response ) => {
     const paramsId: string = req.params.id;
     const deletedUser = await deleteUserService( paramsId );
     return res.status(204).json(deletedUser);
-}
+};
 
 export { createUserController, listUsersController, updateUserController, deleteUserController };

@@ -16,7 +16,7 @@ app.use('/users', userRoutes);
 app.use('/login', sessionRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/properties', propertyRoutes);
-app.use('/schudeles', schudeleRoutes);
+app.use('/schedules', schudeleRoutes);
 
 app.use(handleError);
 

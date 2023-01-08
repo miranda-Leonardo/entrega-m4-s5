@@ -28,10 +28,10 @@ class Property {
     size: number;
 
     @CreateDateColumn()
-    createAt: Date;
+    createdAt: Date;
 
     @UpdateDateColumn()
-    updateAt: Date;
+    updatedAt: Date;
 
     @OneToOne(() => Address)
     @JoinColumn()
@@ -40,7 +40,7 @@ class Property {
     @ManyToOne(() => Category, category => category.id)
     category: Category;
 
-    @OneToMany( () => Schudele, schudele => schudele.id )
+    @OneToMany( () => Schudele, schudele => schudele.property )
     schudeles: Schudele[];
 };
 

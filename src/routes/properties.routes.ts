@@ -8,6 +8,6 @@ import { createPropertySerializer } from '../serializers/property.serializer';
 const propertyRoutes = Router();
 
 propertyRoutes.post('', ensureAuthMiddleware, ensureIsAdmMiddleware, ensureDataIsValidMiddleware(createPropertySerializer), createPropertyController);
-propertyRoutes.get('', ensureAuthMiddleware, listPropertiesController);
+propertyRoutes.get('', listPropertiesController);
 
 export { propertyRoutes };
